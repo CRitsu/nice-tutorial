@@ -1,0 +1,3 @@
+<view class="container content-color" style='min-height:{{minHeight}}px'>
+  <button type="default" bindtap='toDemo'>Demo</button>
+</view>

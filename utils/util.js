@@ -14,6 +14,22 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const setLastRead = () => {
+  const pages = getCurrentPages()
+  const url = pages[pages.length - 1].route
+  wx.setStorage({
+    key: 'lastRead',
+    data: '/' + url,
+  })
+}
+
+const getLastRead = (obj, origin) => {
+  const url = wx.getStorageSync('lastRead')
+  return url ? url : origin
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  setLastRead: setLastRead,
+  getLastRead: getLastRead
 }

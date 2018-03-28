@@ -1,0 +1,161 @@
+/* pages/article/todolist/demo/demo.wxss */
+
+/* START 通用样式 */
+
+.full-width {
+  width: 100%;
+}
+
+.white {
+  color: #fff;
+}
+
+.wrap-style {
+  line-height: 3em;
+  height: 3em;
+  margin: 0 0.5em;
+}
+
+.radius {
+  border-radius: 3px;
+}
+
+.space-right {
+  padding-right: 1em;
+}
+
+.space {
+  margin: 0.5em 0;
+}
+
+.display-none {
+  display: none;
+}
+
+.shadow {
+  box-shadow: 0 0 10px #aaa;
+}
+
+.back-blue {
+  background-color: #60a3c3;
+}
+
+/* END 通用样式 */
+
+/* START 容器样式 */
+
+.container {
+  background-size: cover;
+  background-attachment: fixed;
+  font-size: 15px;
+}
+
+/* END 容器样式 */
+
+/* START 输入框样式 */
+
+.input-area input {
+  padding-left:3em;
+}
+
+.input-label {
+  position: absolute;
+  z-index: 199;
+  height: 1.9em;
+  line-height: 1.9em;
+  margin-left: 1.07em;
+  font-size: 1.5em;
+}
+
+/* END 输入框样式 */
+
+/* START 任务清单项目容器样式 */
+
+.wrapper {
+  padding-left: 0;
+  margin-bottom: 5rpx;
+  position: relative;
+  left: 0;
+}
+
+/* END 任务清单项目容器样式 */
+
+/* START 任务清单项目样式 */
+
+.item {
+  padding-left: 0;
+  padding-right: 1em;
+  background-color: white;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+  left: 0;
+  z-index: 2;
+}
+
+.item text {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.checkbox-label {
+  margin: 0 1em;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #aaa;
+  display: inline-block;
+  position:relative;
+  top:4px;
+}
+
+.checkbox-label.checked::before {
+  content: '';
+  border-bottom: 2px solid #aaa;
+  border-right: 2px solid #aaa;
+  border-radius: 3px;
+  position: absolute;
+  height: 1em;
+  width: .5em;
+  transform: rotate(45deg);
+  top: -.3em;
+  left: .2em;
+}
+
+.item.checked {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* END 任务清单项目样式 */
+
+/* START 删除按钮样式 */
+
+.back-red {
+  background: red;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  color: #fff;
+  text-align:right;
+  z-index: 1;
+  width: 100%;
+}
+
+.delete-button text {
+  padding-right: 3em;
+}
+
+/* END 删除按钮样式 */
+
+/* START 切换显示按钮样式 */
+
+.switch-button {
+  margin: 15px 0;
+  padding: 5px 1em;
+  font-size: 13px;
+}
+
+/* END 切换显示按钮样式 */

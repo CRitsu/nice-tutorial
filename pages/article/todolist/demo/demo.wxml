@@ -1,0 +1,63 @@
+<!-- START 模版项目列表 -->
+<template name='list'>
+  <!-- START 详细 -->
+  <view class='item radius {{item.checked ? "checked" : ""}}' style='{{item.style}}' bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd' data-id='{{item.id}}' bindlongpress='showDetail' data-left='{{item.left}}'>
+    <label class='checkbox-label radius {{item.checked ? "checked" : ""}}'>
+      <checkbox class='display-none' value='{{item.id}}' checked='{{item.checked}}'></checkbox>
+    </label>
+    <text class='{{item.checked ? "checked" : ""}}'>{{item.desc}}</text>
+  </view>
+  <!-- END 详细 -->
+
+  <!-- START 删除按钮 -->
+  <view class='back-red delete-button radius' bindtap='deleteItem' data-id='{{item.id}}'>
+    <text>删除</text>
+  </view>
+  <!-- END 删除按钮 -->
+</template>
+<!-- END 模版项目列表 -->
+
+
+<view class='container content-color' style='min-height:{{minHeight}}px;background-image:url({{theme.backImage}})'>
+
+  <!-- START 任务清单输入框 -->
+  <view class='input-area full-width space'>
+    <label class='white input-label' for='add'>+</label>
+    <input class='wrap-style radius white shadow space-right back-blue' placeholder='添加任务...' placeholder-class='white' id='add' bindconfirm='addItem' value='{{value}}'></input>
+  </view>
+  <!-- END 任务清单输入框 -->
+  
+  <!-- START 未完成任务清单列表 -->
+  <view class='item-area full-width'>
+    <checkbox-group bindchange='checkboxChange'>
+
+      <view class='wrapper wrap-style radius' wx:for='{{items}}' wx:key='id' wx:if='{{!item.checked}}'>
+
+        <template is='list' data='{{item}}' />
+        
+      </view>
+
+    </checkbox-group>
+  </view>
+  <!-- END 未完成任务清单列表 -->
+
+  <view wx:if='{{!items || items.length === 0}}'>还没有任务，快去添加任务吧！</view>
+
+  <view class='switch-button back-blue radius white' bindtap='switchShowCompleted'>
+    {{showCompleted ? '已完成的任务' : '显示已完成的任务'}}
+  </view>
+
+  <!-- START 未完成任务清单列表 -->
+  <view class='item-area full-width' wx:if='{{showCompleted}}'>
+    <checkbox-group bindchange='checkboxChange'  data-checked='true'>
+
+      <view class='wrapper wrap-style radius' wx:for='{{completedItems}}' wx:key='id'>
+
+        <template is='list' data='{{item}}' />
+        
+      </view>
+
+    </checkbox-group>
+  </view>
+  <!-- END 未完成任务清单列表 -->
+</view>

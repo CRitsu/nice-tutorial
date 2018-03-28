@@ -1,0 +1,4 @@
+<template name="foot">
+  <navigator class="page-foot" openType="switchTab" url="/pages/index/index" hover-class="none">
+  </navigator>
+</template>

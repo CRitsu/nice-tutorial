@@ -1,0 +1,3 @@
+<view class='container' style='min-height:{{minHeight}}px'>
+  <text>test</text>
+</view>

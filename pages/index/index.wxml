@@ -1,13 +1,53 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class='background' style='height:{{minHeight}}px;width:{{width}}px'></view>
+
+<view class="container content-color" style='min-height:{{minHeight}}px'>
+  <image mode='widthFix' src='{{logoUrl}}' bindtap='bindViewTap'></image>
+
+  <view class='align-center sub-color'>{{description}}</view>
+  <view class='description margin-bottom'>
+    <view class='article-title title-color'>创建一个任务清单小程序</view>
+    <text class='line-height'>
+      这是Nice教程的其中一篇教程，暂时也是仅有的一篇教程。\n
+      首先，本篇教程面向的人群是了解Web开发并想开发小程序的初学者。\n
+      这篇教程将一步一步地帮助你搭建出一个任务清单小程序。这个小程序的功能包含添加任务、删除任务、标记完成、筛选显示、拖拽排序和服务器数据同步等。可以说得上是可堪一用的小工具了。不过请放心，难度系数并不高，只要你耐心看下去，你也可以很快的做出你自己的任务清单小程序的。\n
+    </text>
+    <view class='align-center'>
+      <image 
+        mode='widthFix'
+        src='{{images.youGood}}'
+        bindload='imageLoad'
+        id='youGood'
+        style='height:{{imageSize.youGood.height}}px;width:{{imageSize.youGood.width}}px'
+      />
+    </view>
+    <text>
+      你大概需要具备下面这些基础技能来帮助你在阅读本篇教程时顺利的理解和实现这个小程序。\n
+    </text>
+    <view class='list line-height'>
+      <view class='item'>了解HTML、CSS、JS的基础</view>
+      <view class='item'>了解Git的基础</view>
+    </view>
+    <text class='line-height'>
+      看吧，要求并不是很高吧！\n
+      若上面某一项你不了解，赶紧去搜索一下资料充充电吧！\n
+      教程将帮助你直到你完成这个任务清单小程序。\n
+      如果你准备好了，就点击下面的“Get Started!”按钮吧！\n
+      还等什么？赶紧的开始吧！\n
+    </text>
+    <view class='align-center'>
+      <image 
+        mode='widthFix'
+        src='{{images.happyMusic}}'
+        bindload='imageLoad'
+        id='happyMusic'
+        style='height:{{imageSize.happyMusic.height}}px;width:{{imageSize.happyMusic.width}}px'
+      />
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class='bottom-button margin-bottom'>
+    <button type='primary' bindtap='toTutorial'>Get Started!</button>
+    <view class='link-color about' hover-class='link-hover'>About</view>
   </view>
 </view>

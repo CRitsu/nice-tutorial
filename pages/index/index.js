@@ -1,13 +1,18 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const faces = require('../../utils/faces.js')
+const utils = require('../../utils/util.js')
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    logoUrl: 'http://wx4.sinaimg.cn/mw690/65f02d4egy1fp5e6zvox4g21400gydfz.gif',
+    description: 'Nice教程，一些有用的教程。',
+    minHeight: wx.getSystemInfoSync().windowHeight,
+    width: wx.getSystemInfoSync().windowWidth,
+    images: faces.default,
+    imageSize: {},
+    lastRead: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,40 +20,33 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+  imageLoad: function(e) {
+    // console.log(e)
+    const height = e.detail.height
+    const width = e.detail.width
+    const id = e.currentTarget.id
+    let h = height, w = width
+    if (this.data.width < w) {
+      const ratio = height / width
+      w = this.data.width
+      h = w * ratio
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+    let imgSize = this.data.imageSize
+    imgSize[id] = {
+      height: h,
+      width: w
+    }
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      imageSize: imgSize
     })
+  },
+  toTutorial: function() {
+    const url = utils.getLastRead(this, '../article/todolist/index')
+    wx.navigateTo({
+      url: url
+    })
+  },
+  onLoad: function () {
+    // ...
   }
 })
